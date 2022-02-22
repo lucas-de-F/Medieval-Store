@@ -1,2 +1,3 @@
 tests/test.ts
 /**/fixtures/projects/back-end/.eslintrc.json
+dist/
