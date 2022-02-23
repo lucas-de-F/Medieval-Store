@@ -1,4 +1,13 @@
 {
+  "settings": {
+    "LSP": {
+      "LSP-eslint": {
+        "settings": {
+          "nodePath": "/usr/local/bin/node"
+        }
+      }
+    }
+  },
   "root": true,
   "env": {
     "browser": false,

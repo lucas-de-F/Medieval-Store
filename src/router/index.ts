@@ -1,3 +1,4 @@
 import users from './userRouter';
+import login from './login';
 
-export default users;
+export { login, users };
