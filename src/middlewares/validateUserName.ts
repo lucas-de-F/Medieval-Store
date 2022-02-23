@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-interface error {
+interface NameError {
   error: string,
 }
 
-function validateName(req: Request, res: Response, next: NextFunction): Response<error> | void {
+function validateName(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Response<NameError> | void {
   const { username } = req.body;
   if (!username) {
     return res.status(400).json({ error: 'Username is required' });

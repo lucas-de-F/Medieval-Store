@@ -1,22 +1,10 @@
-const jwt = require('jsonwebtoken');
+import { sign, verify } from 'jsonwebtoken';
 
-export interface IToken {
-    token: string
-}
+type Payload = {
+  id: number;
+  username: string;
+};
 
-export function generateToken({ username }: { username: string }): IToken {
-  const jwtOptions = {
-    algorithm: 'HS256',
-    subject: username,
-    expiresIn: '1h',
-  };
-
-  const payload = {
-    username,
-    isAdimin: false,
-  };
-
-  const token = jwt.sign(payload, process.env.JWT_SECRET, jwtOptions);
-
-  return { token };
-}
+const SECRET: any = process.env.JWT_SECRET;
+export const generateToken = (payload: Payload) => sign(payload, SECRET);
+export const verifyToken = (token: string) => verify(token, SECRET);

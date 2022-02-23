@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-interface error {
+interface PassError {
   error: string,
 }
 
-function validatePassword(req: Request, res: Response, next: NextFunction): Response<error> | void {
+function validatePassword(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Response<PassError> | void {
   const { password } = req.body;
   if (!password) {
     return res.status(400).json({ error: 'Password is required' });

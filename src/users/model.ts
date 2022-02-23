@@ -4,7 +4,7 @@ import { IUser, User } from './IUser';
 
 export const a = () => {};
 
-export const postUser = async (user: IUser): Promise<IUser> => {
+export const postUser = async (user: IUser): Promise<User> => {
   const {
     username, classe, level, password,
   } = user;

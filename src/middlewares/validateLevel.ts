@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-interface error {
+interface LevelError {
   error: string,
 }
 
-function validateLevel(req: Request, res: Response, next: NextFunction): Response<error> | void {
+function validateLevel(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Response<LevelError> | void {
   const { level } = req.body;
   if (level === undefined) {
     return res.status(400).json({ error: 'Level is required' });

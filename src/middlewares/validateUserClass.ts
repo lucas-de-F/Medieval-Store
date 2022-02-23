@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-interface error {
+interface ClassError {
   error: string,
 }
 
-function validateClass(req: Request, res: Response, next: NextFunction): Response<error> | void {
+function validateClass(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Response<ClassError> | void {
   const { classe } = req.body;
   if (!classe) {
     return res.status(400).json({ error: 'Classe is required' });
