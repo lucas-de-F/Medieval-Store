@@ -1,10 +1,11 @@
-import { sign, verify } from 'jsonwebtoken';
+import { sign, verify, JwtPayload } from 'jsonwebtoken';
 
 type Payload = {
   id: number;
   username: string;
 };
 
-const SECRET: any = process.env.JWT_SECRET;
+const SECRET: string = process.env.JWT_SECRET || 'segredo';
 export const generateToken = (payload: Payload) => sign(payload, SECRET);
-export const verifyToken = (token: string): Payload | any => verify(token, SECRET);
+
+export const verifyToken = (token: string): JwtPayload | string => verify(token, SECRET);
