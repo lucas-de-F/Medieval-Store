@@ -15,13 +15,13 @@ export const validateLogin = async (
   const login: ILogin = req.body;
   const findUsername = await model.findUserName(login.username);
   if (findUsername.length === 0) {
-    return res.status(400).json({ error: 'Username or password invalid' });
+    return res.status(401).json({ error: 'Username or password invalid' });
   }
+
   const verifyPassWord = await model.findPassWord(login.username, login.password);
   if (verifyPassWord.length === 0) {
-    return res.status(400).json({ error: 'Username or password invalid' });
+    return res.status(401).json({ error: 'Username or password invalid' });
   }
-  console.log(verifyPassWord);
 
   const { id, username }: Payload = verifyPassWord[0];
   const payload = { id, username };
