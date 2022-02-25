@@ -10,7 +10,7 @@ export const postUser = async (user: IUser): Promise<User> => {
   } = user;
 
   const [result] = await connection.execute<ResultSetHeader>(
-    'INSERT INTO Users (username, classe, level, password) VALUES (?, ?, ?, ?)',
+    'INSERT INTO Trybesmith.Users (username, classe, level, password) VALUES (?, ?, ?, ?)',
     [username, classe, level, password],
   );
   const { insertId: id } = result;

@@ -7,4 +7,4 @@ type Payload = {
 
 const SECRET: any = process.env.JWT_SECRET;
 export const generateToken = (payload: Payload) => sign(payload, SECRET);
-export const verifyToken = (token: string) => verify(token, SECRET);
+export const verifyToken = (token: string): Payload | any => verify(token, SECRET);
