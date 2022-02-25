@@ -3,7 +3,7 @@ import { IProduct, Product } from './Iproduct';
 import connection from '../models/connection';
 
 export const PostProduct = async (product: IProduct): Promise<Product> => {
-  const { amount, name } = product;
+  const { amount, name, orderId } = product;
   
   const [result] = await connection.execute<ResultSetHeader>(
     'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?)',
@@ -11,7 +11,7 @@ export const PostProduct = async (product: IProduct): Promise<Product> => {
   );
   const { insertId: id } = result;
 
-  return { id, name, amount };
+  return { id, name, amount, orderId };
 };
 
 export const getProducts = async (): Promise<any> => {

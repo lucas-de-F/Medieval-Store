@@ -17,7 +17,7 @@ function ValidateAmount(
     return res.status(422).json({ error: 'Amount must be a string' });
   }
   if (amount.length <= 2) {
-    return res.status(422).json({ error: 'Amount must be longer 2 characters' });
+    return res.status(422).json({ error: 'Amount must be longer than 2 characters' });
   }
 
   return next();

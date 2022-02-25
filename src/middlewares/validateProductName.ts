@@ -17,7 +17,7 @@ function ValidateProductName(
     return res.status(422).json({ error: 'Name must be a string' });
   }
   if (name.length <= 2) {
-    return res.status(422).json({ error: 'Name must be longer 2 characters' });
+    return res.status(422).json({ error: 'Name must be longer than 2 characters' });
   }
 
   return next();
