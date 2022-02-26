@@ -12,5 +12,5 @@ export const PostProduct = async (req: Request, res: Response): Promise<void> =>
 
 export const GetProducts = async (req: Request, res: Response): Promise<void> => {
   const getProducts = await service.getProducts();
-  res.status(201).json(getProducts);
+  res.status(200).json(getProducts);
 };
