@@ -3,7 +3,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import { verifyToken } from './createToken';
 import CustomError from './errorClass';
 
-interface NewRequest extends Request {
+export interface NewRequest extends Request {
   payload?: JwtPayload;
 }
 

@@ -1,6 +1,6 @@
 import { sign, verify, JwtPayload } from 'jsonwebtoken';
 
-type Payload = {
+export type Payload = {
   id: number;
   username: string;
 };
