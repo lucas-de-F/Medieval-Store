@@ -3,6 +3,9 @@ export interface ILogin {
   password: string,
 }
 
+export interface ParamError {
+  error: string,
+}
 export interface Login extends ILogin {
   id: number
 }

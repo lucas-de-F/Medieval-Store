@@ -1,17 +1,27 @@
 import { Router } from 'express';
 // import rescue from 'express-rescue';
 
-import {
-  validateLogin, validateName, validatePassword,
-} from '../middlewares';
+import ValidatePassword from '../login/loginUtils/validatePassword';
+import ValidateUserName from '../login/loginUtils/validateUserName';
+import LoginController from '../login/controller';
 
-const login = Router();
+class LoginRouter {
+  public router: Router;
 
-login.post(
-  '/',
-  validateName,
-  validatePassword,
-  validateLogin,
-);
+  constructor() {
+    this.router = Router();
 
-export default login;
+    this.login();
+  }
+
+  private login() {
+    this.router.post(
+      '/',
+      ValidatePassword.PasswordCheck,
+      ValidateUserName.checkUserName,
+      LoginController.login,
+    );
+  }
+}
+
+export default (new LoginRouter());

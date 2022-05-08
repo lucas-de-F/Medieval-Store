@@ -6,6 +6,12 @@ export type Payload = {
 };
 
 const SECRET: string = process.env.JWT_SECRET || 'segredo';
-export const generateToken = (payload: Payload) => sign(payload, SECRET);
+class TokenUtils {
+  private secret = SECRET;
 
-export const verifyToken = (token: string): JwtPayload | string => verify(token, SECRET);
+  generateToken = (payload: Payload) => sign(payload, this.secret);
+
+  verifyToken = (token: string): JwtPayload | string => verify(token, this.secret);
+}
+
+export default (new TokenUtils());

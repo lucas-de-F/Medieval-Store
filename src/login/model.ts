@@ -1,20 +1,26 @@
 import { ResultSetHeader } from 'mysql2';
 import connection from '../models/connection';
 
-export const findUserName = async (username: string): Promise<string[]> => {
-  const [result]: any = await connection.execute<ResultSetHeader>(
-    'SELECT * FROM Trybesmith.Users WHERE username = ?;',
-    [username],
-  );
+class LoginModel {
+  constructor(private connect = connection) {}
 
-  return result;
-};
+  async findUserName(username: string): Promise<string[]> {
+    const [result]: any = await this.connect.execute<ResultSetHeader>(
+      'SELECT * FROM Trybesmith.Users WHERE username = ?;',
+      [username],
+    );
+  
+    return result;
+  }
 
-export const findPassWord = async (username: string, password: string): Promise<any> => {
-  const [result]: any = await connection.execute<ResultSetHeader>(
-    'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?;',
-    [username, password],
-  );
+  async findPassWord(username: string, password: string): Promise<any> {
+    const [result]: any = await this.connect.execute<ResultSetHeader>(
+      'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?;',
+      [username, password],
+    );
+  
+    return result;
+  }
+}
 
-  return result;
-};
+export default (new LoginModel());

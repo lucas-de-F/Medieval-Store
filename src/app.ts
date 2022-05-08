@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/users', users);
-app.use('/login', login);
+app.use('/login', login.router);
 app.use('/products', products);
 app.use('/orders', orders);
 app.use(errorMiddleware);

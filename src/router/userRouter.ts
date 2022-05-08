@@ -3,17 +3,19 @@ import rescue from 'express-rescue';
 import postUsers from '../users/controller';
 
 import {
-  validateClass, validateName, validateLevel, validatePassword,
+  validateClass, validateLevel,
 } from '../middlewares';
+import ValidateUserName from '../login/loginUtils/validateUserName';
+import ValidatePassword from '../login/loginUtils/validatePassword';
 
 const users = Router();
 
 users.post(
   '/',
-  validateName,
+  ValidateUserName.checkUserName,
   validateClass,
   validateLevel,
-  validatePassword,
+  ValidatePassword.PasswordCheck,
   rescue(postUsers),
 );
 
