@@ -6,14 +6,21 @@ Em essência, é uma api em node e express de uma loja de item medievais.
 ## Funcionalidades
 
 [x] possui CRUD de clientes
+
 [x] possui cadastro e listagem de produtos
+
 [x] possui cadastro de pedidos
 
 ## A FAZER:
 
 [ ] Refatorar para classe
+
+[ ] Utilizar Swagger
+
 [ ] Dockerização
+
 [ ] Refatorar para o uso de Sequelize ou Prisma
+
 [ ] Fazer testes
 
 # Plus
