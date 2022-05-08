@@ -1,15 +1,20 @@
-import * as model from './model';
 import TokenUtils from '../middlewares/createToken';
-import { IUser } from './IUser';
+import { Itoken, IUser } from './IUser';
+import UserModel from './model';
 
-interface Itoken {
-  token: string,
-} 
-export const postUser = async (user: IUser): Promise<Itoken> => {
-  const { id, username } = await model.postUser(user);
-  const payload = { id, username };
+class UserServices {
+  private model = UserModel;
+  
+  constructor() {
+    this.postUser = this.postUser.bind(this);
+  }
 
-  return { token: TokenUtils.generateToken(payload) };
-};
+  async postUser(user: IUser): Promise<Itoken> {
+    const { id, username } = await this.model.postUser(user);
+    const payload = { id, username };
+  
+    return { token: TokenUtils.generateToken(payload) };
+  }
+}
 
-export const a = () => {};
+export default (new UserServices());

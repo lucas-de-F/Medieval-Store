@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use('/users', users);
+app.use('/users', users.router);
 app.use('/login', login.router);
 app.use('/products', products);
 app.use('/orders', orders);

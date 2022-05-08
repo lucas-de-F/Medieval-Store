@@ -1,22 +1,28 @@
 import { Router } from 'express';
 import rescue from 'express-rescue';
 import postUsers from '../users/controller';
-
-import {
-  validateClass, validateLevel,
-} from '../middlewares';
+import { validateClass, validateLevel } from '../middlewares';
 import ValidateUserName from '../login/loginUtils/validateUserName';
 import ValidatePassword from '../login/loginUtils/validatePassword';
 
-const users = Router();
+class UserRouter {
+  public router: Router; 
 
-users.post(
-  '/',
-  ValidateUserName.checkUserName,
-  validateClass,
-  validateLevel,
-  ValidatePassword.PasswordCheck,
-  rescue(postUsers),
-);
+  constructor() {
+    this.router = Router();
+    this.PostUser();
+  }
 
-export default users;
+  PostUser() {
+    this.router.post(
+      '/',
+      ValidateUserName.checkUserName,
+      validateClass,
+      validateLevel,
+      ValidatePassword.PasswordCheck,
+      rescue(postUsers.postUsers),
+    );
+  } 
+}
+
+export default (new UserRouter());

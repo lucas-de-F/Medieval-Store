@@ -5,6 +5,9 @@ export interface IUser {
   password: string,
 }
 
+export interface Itoken {
+  token: string,
+}
 export interface User extends IUser {
   id: number
 }

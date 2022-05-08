@@ -1,7 +1,7 @@
-import users from './userRouter';
 import products from './products';
 import orders from './orders';
 
+export { default as users } from './userRouter';
 export { default as login } from './login';
 
-export { users, products, orders };
+export { products, orders };

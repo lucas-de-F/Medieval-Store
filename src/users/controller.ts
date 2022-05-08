@@ -1,13 +1,20 @@
 import { Request, Response } from 'express';
 import { IUser } from './IUser';
+import UserServices from './service';
 
-import * as service from './service';
+class UserController {
+  private services = UserServices;
 
-const postUsers = async (req: Request, res: Response): Promise<void> => {
-  const user: IUser = req.body;
-  const post = await service.postUser(user);
+  constructor() {
+    this.postUsers = this.postUsers.bind(this);
+  }
 
-  res.status(201).json(post);
-};
+  async postUsers(req: Request, res: Response): Promise<any> {
+    const user: IUser = req.body;
+    const post = await this.services.postUser(user);
+    
+    return res.status(201).json(post);
+  }
+}
 
-export default postUsers;
+export default (new UserController());
